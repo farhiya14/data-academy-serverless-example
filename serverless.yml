@@ -16,9 +16,7 @@ functions:
   example-service-1:
     runtime: python3.8
     handler: handler.start
-    module: example-service-2
 
   example-service-2:
     runtime: python3.8
     handler: handler.start
-    module: example-service-2

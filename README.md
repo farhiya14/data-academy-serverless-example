@@ -59,3 +59,28 @@ sls deploy
 ```
 
 This command will deploy your entire service via `CloudFormation`. Run this command when you have made infrastructure changes (i.e., you edited `serverless.yml`).
+
+### Current problems and workarounds
+
+Serverless Framework does not currently provide support for AWS SSO. When running the deploy command, it will look for the file `~/.aws/credentials` which stores the credentials of your AWS profile to be able to access AWS services through the CLI. An example file may look like this:
+
+```
+[default]
+aws_access_key_id=AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+```
+
+AWS SSO does not require this file, and so the deploy command will fail to work by default. In order to counteract this, someone created a useful `npm` package called `aws-sso-credentials-getter` that will generate temporary credentials for us when we run `aws sso login`.
+
+To install locally, run `npm install -g aws-sso-credentials-getter`.
+
+When installed, we can run the following commands to now get the deploy to work for us:
+
+```sh
+$ npx ssocred [name-of-profile]
+$ sls deploy --aws-profile [name-of-profile]
+```
+
+### Tearing down a serverless application
+
+To remove anything you have deployed with serverless, run `sls remove --aws-profile [name-of-profile]`.

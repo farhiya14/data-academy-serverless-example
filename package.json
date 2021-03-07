@@ -1,0 +1,22 @@
+{
+  "name": "data-academy-serverless-example",
+  "version": "1.0.0",
+  "description": "A repository to demonstrate a simple serverless repo for the data academy.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infinityworks/data-academy-serverless-example.git"
+  },
+  "author": "IW",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/infinityworks/data-academy-serverless-example/issues"
+  },
+  "homepage": "https://github.com/infinityworks/data-academy-serverless-example#readme",
+  "dependencies": {
+    "serverless": "^2.28.7"
+  }
+}

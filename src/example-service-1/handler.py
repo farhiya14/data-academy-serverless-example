@@ -1,4 +1,5 @@
 import json
+import boto3
 
 def handle(event):
     body = {

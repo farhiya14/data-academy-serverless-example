@@ -1,12 +1,19 @@
 service: data-academy-serverless-example
+
 plugins:
   - serverless-python-requirements
   - serverless-iam-roles-per-function
+
+custom:
+  pythonRequirements:
+    slim: true
+    layer: true
 
 provider:
   name: aws
   stage: dev
   region: eu-west-1
+  runtime: python3.8
   lambdaHashingVersion: 20201221
 
 package:
@@ -19,14 +26,12 @@ package:
 
 functions:
   example-service-1:
-    runtime: python3.8
     handler: src/example-service/handler.start
     timeout: 300
     layers:
       - !Ref PythonRequirementsLambdaLayer
 
   example-service-2:
-    runtime: python3.8
     handler: src/example-service-2/handler.start
     timeout: 300
     layers:

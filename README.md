@@ -34,12 +34,9 @@ Imagine each service is just a regular Python application which lives inside AWS
 If we look at this snippet from `serverless.yml`:
 
 ```yml
-example-service-1:
-  runtime: python3.8
-  handler: src/example-service-1/handler.start
-  timeout: 300
-  layers:
-    - !Ref PythonRequirementsLambdaLayer
+functions:
+  example-service-1:
+    handler: src/example-service-1/handler.start
 ```
 
 This tells us that we have defined a `Lambda` function with the name `example-service-1`. It will have a runtime of `Python 3.8`. The `handler` defines the entry point of the `Lambda`, so in our case it will be `src/example-service-1/handler.start`.
@@ -79,6 +76,7 @@ When installed, we can run the following commands to now get the deploy to work 
 ```sh
 $ aws sso login --profile [name-of-profile]   # make sure we are logged in first
 $ npx ssocred [name-of-profile]               # generate temporary local credentials
+$ sls package --aws-profile [name-of-profile]  # package serverless application locally
 $ sls deploy --aws-profile [name-of-profile]  # deploy serverless application to AWS
 ```
 

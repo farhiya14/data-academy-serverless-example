@@ -10,13 +10,24 @@ provider:
   lambdaHashingVersion: 20201221
 
 package:
-  individually: true
+  individually: false
+  include: 
+    - src/**
+  exclude:
+    - "*"
+    - "*/**"
 
 functions:
   example-service-1:
     runtime: python3.8
-    handler: handler.start
+    handler: src/example-service/handler.start
+    timeout: 300
+    layers:
+      - !Ref PythonRequirementsLambdaLayer
 
   example-service-2:
     runtime: python3.8
-    handler: handler.start
+    handler: src/example-service-2/handler.start
+    timeout: 300
+    layers:
+      - !Ref PythonRequirementsLambdaLayer

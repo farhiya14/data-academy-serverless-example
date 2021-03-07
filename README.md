@@ -70,7 +70,7 @@ aws_access_key_id=AKIAIOSFODNN7EXAMPLE
 aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 
-AWS SSO does not require this file, and so the deploy command will fail to work by default. In order to counteract this, someone created a useful `npm` package called `aws-sso-credentials-getter` that will generate temporary credentials for us when we run `aws sso login`.
+AWS SSO does not require this file, and so the deploy command will fail to work by default. In order to counteract this, someone created a useful `npm` package called [aws-sso-credentials-getter](https://github.com/PredictMobile/aws-sso-credentials-getter/) that will generate temporary credentials for us when we run `aws sso login`.
 
 To install locally, run `npm install -g aws-sso-credentials-getter`.
 
@@ -79,6 +79,29 @@ When installed, we can run the following commands to now get the deploy to work 
 ```sh
 $ npx ssocred [name-of-profile]
 $ sls deploy --aws-profile [name-of-profile]
+```
+
+### Example output
+
+If `sls deploy` succeeded, you should see the following output in your terminal:
+
+```
+Serverless: Stack update finished...
+Service Information
+service: data-academy-serverless-example
+stage: dev
+region: eu-west-1
+stack: data-academy-serverless-example-dev
+resources: 9
+api keys:
+  None
+endpoints:
+  None
+functions:
+  example-service-1: data-academy-serverless-example-dev-example-service-1
+  example-service-2: data-academy-serverless-example-dev-example-service-2
+layers:
+  None
 ```
 
 ### Tearing down a serverless application

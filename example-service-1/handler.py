@@ -2,7 +2,7 @@ import json
 
 def start(event):
     body = {
-        "message": "Your function executed successfully!",
+        "message": "Your function executed for service 2!",
         "input": event
     }
 

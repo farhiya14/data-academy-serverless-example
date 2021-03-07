@@ -22,9 +22,8 @@ A repository to demonstrate a simple serverless repo for the data academy.
 1. Give the service a name.
 1. Select `n` for allowing monitoring services.
 
-This will generate a new directory, containing an `.npmignore`, `handler.py` and `serverless.yml` file. However, this repository is structured slightly differently by removing `.npmignore` and moving `serverless.yml` to the top-level directory. This is so you can define multiple services for a project. You can see this with the two example service directories that have been setup.
+This will generate a new directory, containing an `.npmignore`, `handler.py` and `serverless.yml` file. However, this repository is structured slightly differently by removing `.npmignore` and moving `serverless.yml` to the top-level directory. This is so you can define multiple services for a project. You can see this with the two example service directories that have been setup inside the `src` folder.
 
-- The `.npmignore` file is used to keep stuff out of your package, like `.gitignore`.
 - The `handler.py` file is the entry point for your service.
 - The `serverless.yml` file is used to define the infrastructure of your service(s).
 
@@ -35,14 +34,15 @@ Imagine each service is just a regular Python application which lives inside AWS
 If we look at this snippet from `serverless.yml`:
 
 ```yml
-functions:
-  example-service-1:
-    runtime: python3.8
-    handler: handler.start
-    module: example-service-1
+example-service-1:
+  runtime: python3.8
+  handler: src/example-service-1/handler.start
+  timeout: 300
+  layers:
+    - !Ref PythonRequirementsLambdaLayer
 ```
 
-This tells us that we have defined a `Lambda` with the name `example-service-1`. It will have a runtime of `Python 3.8`. The `handler` defines the entry point of the `Lambda`, which is denoted as `module_name.function_name`, so in our case it will be `handler.start`.
+This tells us that we have defined a `Lambda` function with the name `example-service-1`. It will have a runtime of `Python 3.8`. The `handler` defines the entry point of the `Lambda`, so in our case it will be `src/example-service-1/handler.start`.
 
 ### Deploying your application
 
@@ -72,13 +72,14 @@ aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 AWS SSO does not require this file, and so the deploy command will fail to work by default. In order to counteract this, someone created a useful `npm` package called [aws-sso-credentials-getter](https://github.com/PredictMobile/aws-sso-credentials-getter/) that will generate temporary credentials for us when we run `aws sso login`.
 
-To install locally, run `npm install -g aws-sso-credentials-getter`.
+To install locally, run `npm install aws-sso-credentials-getter`.
 
 When installed, we can run the following commands to now get the deploy to work for us:
 
 ```sh
-$ npx ssocred [name-of-profile]
-$ sls deploy --aws-profile [name-of-profile]
+$ aws sso login --profile [name-of-profile]   # make sure we are logged in first
+$ npx ssocred [name-of-profile]               # generate temporary local credentials
+$ sls deploy --aws-profile [name-of-profile]  # deploy serverless application to AWS
 ```
 
 ### Example output

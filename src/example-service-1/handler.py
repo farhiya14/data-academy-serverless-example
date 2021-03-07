@@ -1,6 +1,6 @@
 import json
 
-def start(event):
+def handle(event):
     body = {
         "message": "Your function executed for service 2!",
         "input": event

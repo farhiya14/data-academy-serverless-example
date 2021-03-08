@@ -26,13 +26,36 @@ package:
 
 functions:
   example-service-1:
-    handler: src/example-service/handler.start
+    handler: src/example-service-1/handler.start
     timeout: 300
     layers:
       - !Ref PythonRequirementsLambdaLayer
+    events:
+      - s3:
+          bucket: data-academy-final-project-example
+          event: s3:ObjectCreated:*
+          existing: true
+          rules:
+            - suffix: .csv
+    iamRoleStatements:
+      - Effect: 'Allow'
+        Action:
+          - s3:GetObject
+          - s3:ListBucket
+        Resource:
+          - !GetAtt exampleBucket.Arn
+          - !Join [ "", [ !GetAtt exampleBucket.Arn, /* ] ]
 
   example-service-2:
     handler: src/example-service-2/handler.start
     timeout: 300
     layers:
       - !Ref PythonRequirementsLambdaLayer
+
+resources:
+  Resources:
+    exampleBucket:
+      Type: 'AWS::S3::Bucket'
+      DeletionPolicy: Retain
+      Properties:
+        BucketName: data-academy-final-project-example

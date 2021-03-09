@@ -85,6 +85,8 @@ $ npx ssocred [name-of-profile]               # generate temporary local credent
 $ sls deploy --aws-profile [name-of-profile]  # deploy serverless application to AWS
 ```
 
+When running `ssocred` on Windows, if you get an error akin to `no such file or directory, open 'C:\Users\user\.aws\credentials'`, run `touch ~/.aws/credentials`.
+
 ### Example output
 
 If `sls deploy` succeeded, you should see the following output in your terminal:

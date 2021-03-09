@@ -7,6 +7,15 @@ A repository to demonstrate a simple serverless repo for the data academy.
 
     > `Node.js` is a free, open-sourced, cross-platform JavaScript run-time environment that lets developers write command line tools and server-side scripts outside of a browser.
 
+    If you're running your project in a development container, skip this step and run the following commands on the terminal:
+
+    ```sh
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt install node
+    sudo apt install npm
+    ```
+
 1. In your repository, Check if `npm` is installed by running `npm -v`. Run `npm init`.
 
    > `npm` (originally short for `Node Package Manager`) is a package manager for the JavaScript programming language. We need this so that we can install the `serverless` package, along with other potentially useful packages.

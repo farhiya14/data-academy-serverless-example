@@ -16,9 +16,11 @@ A repository to demonstrate a simple serverless repo for the data academy.
     sudo apt install npm
     ```
 
-1. In your repository, Check if `npm` is installed by running `npm -v`. Run `npm init`.
+1. In your repository, Check if `npm` is installed by running `npm -v`.
 
    > `npm` (originally short for `Node Package Manager`) is a package manager for the JavaScript programming language. We need this so that we can install the `serverless` package, along with other potentially useful packages.
+
+1. Run `npm init` to initialise `npm` in your project.
 
 1. Run `npm install serverless`. This will install the `serverless` package for us.
 

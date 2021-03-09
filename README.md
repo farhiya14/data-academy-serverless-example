@@ -53,13 +53,7 @@ This tells us that we have defined a `Lambda` function with the name `example-se
 
 ### Deploying your application
 
-Assuming you can access AWS through the CLI, you can deploy your application to AWS using the following commands:
-
-```sh
-sls package
-```
-
-This command will package your entire infrastructure into the `.serverless` directory by default and make it ready for deployment.
+Assuming you can access AWS through the CLI, you can deploy your application to AWS using the following command:
 
 ```sh
 sls deploy

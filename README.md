@@ -84,7 +84,7 @@ When installed, we can run the following commands to now get the deploy to work 
 ```sh
 $ aws sso login --profile [name-of-profile]   # make sure we are logged in first
 $ npx ssocred [name-of-profile]               # generate temporary local credentials
-$ sls deploy --aws-profile [name-of-profile]  # deploy serverless application to AWS
+$ npx sls deploy --aws-profile [name-of-profile]  # deploy serverless application to AWS
 ```
 
 When running `ssocred` on Windows, if you get an error akin to `no such file or directory, open 'C:\Users\user\.aws\credentials'`, run `touch ~/.aws/credentials`.

@@ -55,6 +55,8 @@ This tells us that we have defined a `Lambda` function with the name `example-se
 
 ### Deploying your application
 
+**Please read the `Current problems and workarounds` section after this.**
+
 Assuming you can access AWS through the CLI, you can deploy your application to AWS using the following command:
 
 ```sh

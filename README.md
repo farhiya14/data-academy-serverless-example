@@ -17,7 +17,7 @@ A repository to demonstrate a simple serverless repo for the data academy.
 
 ### Setting up serverless
 
-1. Run `serverless` or `sls` as a short-hand.
+1. Run `npx serverless` or `npx sls` as a short-hand.
 1. Select `AWS Python`.
 1. Give the service a name.
 1. Select `n` for allowing monitoring services.

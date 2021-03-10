@@ -12,8 +12,8 @@ A repository to demonstrate a simple serverless repo for the data academy.
     ```sh
     sudo apt-get update
     sudo apt-get upgrade
-    sudo apt install node
-    sudo apt install npm
+    curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
+    sudo apt-get install -y nodejs
     ```
 
 1. In your repository, Check if `npm` is installed by running `npm -v`.
@@ -34,7 +34,7 @@ A repository to demonstrate a simple serverless repo for the data academy.
 1. Select `n` for allowing monitoring services.
 1. Select `n` for setting AWS credentials.
 
-This will generate a new directory, containing an `.npmignore`, `handler.py` and `serverless.yml` file. However, this repository is structured slightly differently by removing `.npmignore` and moving `serverless.yml` to the top-level directory. This is so you can define multiple services for a project. You can see this with the two example service directories that have been setup inside the `src` folder.
+This will generate a new directory, containing an `.npmignore`, `handler.py` and `serverless.yml` file. However, this repository is structured slightly differently by moving `serverless.yml` to the top-level directory. This is so you can define multiple services for a project. You can see this with the two example service directories that have been setup inside the `src` folder. Delete the directory that `serverless` generated for you`.
 
 - The `handler.py` file is the entry point for your service.
 - The `serverless.yml` file is used to define the infrastructure of your service(s).
@@ -64,6 +64,18 @@ sls deploy
 ```
 
 This command will deploy your entire service via `CloudFormation`. Run this command when you have made infrastructure changes (i.e., you edited `serverless.yml`).
+
+### Applying permission boundaries
+
+To be able to use `serverless` to deploy services like `Lambda`, you will need to apply the following to the `provider` section of your `serverless.yml`:
+
+```yml
+provider
+  role:
+      permissionsBoundary: arn:aws:iam::xxxxxxxxxxxx:policy/xxxxxxxxxx
+```
+
+Your instructor will provide you the correct `ARN` to use.
 
 ### Current problems and workarounds
 

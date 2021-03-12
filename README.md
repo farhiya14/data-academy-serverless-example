@@ -30,11 +30,11 @@ A repository to demonstrate a simple serverless repo for the data academy.
 
 1. Run `npx serverless` or `npx sls` as a short-hand.
 1. Select `AWS Python`.
-1. Give the service a name.
+1. Give the lambda service a name (such as `etl`).
 1. Select `n` for allowing monitoring services.
 1. Select `n` for setting AWS credentials.
 
-This will generate a new directory, containing an `.npmignore`, `handler.py` and `serverless.yml` file. However, this repository is structured slightly differently by moving `serverless.yml` to the top-level directory. This is so you can define multiple services for a project. You can see this with the two example service directories that have been setup inside the `src` folder. Delete the directory that `serverless` generated for you`.
+This will generate a new directory, containing an `.npmignore`, `handler.py` and `serverless.yml` file. However, this repository is structured slightly differently by moving `serverless.yml` to the top-level directory. This is so you can define multiple services for a project. You can see this with the two example service directories that have been setup inside the `src` folder. Move the newly created directory into your `src` directory and delete `.npmignore`.
 
 - The `handler.py` file is the entry point for your service.
 - The `serverless.yml` file is used to define the infrastructure of your service(s).

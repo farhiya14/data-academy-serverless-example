@@ -34,12 +34,12 @@ A repository to demonstrate a simple serverless repo for the data academy.
 1. Select `n` for allowing monitoring services.
 1. Select `n` for setting AWS credentials.
 
-This will generate a new directory, containing an `.npmignore`, `handler.py` and `serverless.yml` file. However, this repository is structured slightly differently by moving `serverless.yml` to the top-level directory. This is so you can define multiple services for a project. You can see this with the two example service directories that have been setup inside the `src` folder. Move the newly created directory into your `src` directory and delete `.npmignore`.
+When you run the `serverless` command, it will assume you are creating a new project, and so will generate a new directory, containing an `.npmignore`, `handler.py` and `serverless.yml` file. However, we already have a project and so will need to rejig the files to make it suit our needs. Move the `serverless.yml` to the top-level directory. This is so you can define multiple Lambda services for a project. You can see this with the two example Lambda service directories that have been setup inside the `src` folder. Move the newly created directory into your `src` directory and delete `.npmignore`.
 
-- The `handler.py` file is the entry point for your service.
-- The `serverless.yml` file is used to define the infrastructure of your service(s).
+- The `handler.py` file is the entry point for your Lambda service.
+- The `serverless.yml` file is used to define the infrastructure of your overall service.
 
-Imagine each service is just a regular Python application which lives inside AWS Lambda. Inside each of our example service directories, you can define as many Python files as you want, as long as you specify where the starting point of your service is. You can also define a `requirements.txt` for each service too.
+Imagine each Lambda service is just a regular Python application which lives inside AWS Lambda. Inside each of our example Lambda service directories, you can define as many Python files as you want, as long as you specify where the starting point of your service is.
 
 ### How to define a Lambda as infrastructure
 

@@ -126,4 +126,4 @@ layers:
 
 ### Tearing down a serverless application
 
-To remove anything you have deployed with serverless, run `sls remove --aws-profile [name-of-profile]`.
+To remove anything you have deployed with serverless, run `npx sls remove --aws-profile [name-of-profile]`.
